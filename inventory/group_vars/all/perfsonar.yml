@@ -1,4 +1,7 @@
 ---
+perfsonar_esmond_interfaces: "{{ ansible_all_ipv4_addresses }}"
+perfsonar_esmond_archives: "{{ groups['ps-archives'] }}"
+
 #perfsonar_disable_root_ssh : true
 #perfsonar_os_update: true
 #perfsonar_autoupdate: false
