@@ -1,0 +1,99 @@
+{
+    "addresses": {
+        "bin-arbl": {
+            "address": "perfsonar-bin-arbl.umnet.umich.edu"
+        },
+        "bin-seb": {
+            "address": "perfsonar-bin-seb.umnet.umich.edu"
+        },
+        "core-cool": {
+            "address": "perfsonar-core-cool.umnet.umich.edu"
+        },
+        "core-fxb": {
+            "address": "perfsonar-core-fxb.umnet.umich.edu"
+        },
+        "core-lsa": {
+            "address": "perfsonar-core-lsa.umnet.umich.edu"
+        },
+        "core-seb": {
+            "address": "perfsonar-core-seb.umnet.umich.edu"
+        },
+        "dc-macc": {
+            "address": "perfsonar-dc-macc.umnet.umich.edu"
+        }
+    },
+    "groups": {
+        "latency_group": {
+            "type": "mesh",
+            "addresses": [
+                 {"name": "bin-arbl"},
+                 {"name": "bin-seb"},
+                 {"name": "core-cool"},
+                 {"name": "core-fxb"},
+                 {"name": "core-lsa"},
+                 {"name": "core-seb"},
+                 {"name": "dc-macc"}
+             ]  
+        },
+        "throughput_group": {
+            "type": "mesh",
+            "addresses": [
+                 {"name": "bin-arbl"},
+                 {"name": "bin-seb"},
+                 {"name": "core-cool"},
+                 {"name": "core-fxb"},
+                 {"name": "core-lsa"},
+                 {"name": "core-seb"},
+                 {"name": "dc-macc"}
+             ]  
+        }
+    },
+    "tests": {
+        "latency_test": {
+            "type": "latencybg",
+            "spec": {
+                "source": "{% address[0] %}",
+                "dest": "{% address[1] %}",
+                "packet-interval": 0.1,
+                "packet-count": 600
+            }
+        },
+        "throughput_test": {
+            "type": "throughput",
+            "spec": {
+                "source": "{% address[0] %}",
+                "dest": "{% address[1] %}",
+                "duration": "PT30S"
+            }
+        }
+    },
+    "archives": { 
+       "esmond_archive": {
+            "archiver": "esmond",
+            "data": {
+                "url": "https://perfsonar-ma.miserver.it.umich.edu/esmond/perfsonar/archive",
+                "measurement-agent": "{% scheduled_by_address %}"
+            }
+        }
+    },
+    "schedules": { 
+       "every_4_hours": {
+            "repeat": "PT4H",
+            "slip": "PT4H",
+            "sliprand": true
+        }
+    },
+    "tasks": {
+        "latency_task": {
+            "group": "latency_group",
+            "test": "latency_test",
+            "archives": ["esmond_archive"]
+        },
+        "throughput_task": {
+            "group": "throughput_group",
+            "test": "throughput_test",
+            "archives": ["esmond_archive"],
+            "schedule": "every_4_hours"
+        }
+    }
+}

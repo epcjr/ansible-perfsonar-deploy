@@ -1,0 +1,33 @@
+perfsonar_hostname: perfsonar-bin-seb.umnet.umich.edu
+_perfsonar_interfaces:
+  - interface_name: em1
+    interface_ipaddr_ipv4:  198.12.80.230
+    interface_gateway_ipv4: 198.12.80.229
+  - interface_name: p1p1
+    interface_ipaddr_ipv4:  198.12.80.238
+    interface_gateway_ipv4: 198.12.80.237
+perfsonar_troubleshoot:
+  - perfsonar-core-cool.umnet.umich.edu
+interfaces:
+  - interface_name: em1
+    interface_bootproto: static
+    interface_defroute_ipv4: yes
+    interface_ipaddr_ipv4:  198.12.80.230
+    interface_gateway_ipv4: 198.12.80.229
+    interface_netmask_ipv4: 255.255.255.252
+    interface_onboot: yes
+  - interface_name: em2
+    interface_bootproto: static
+    interface_defroute_ipv4: no
+    interface_onboot: no
+  - interface_name: p1p1
+    interface_bootproto: static
+    interface_defroute_ipv4: no
+    interface_ipaddr_ipv4:  198.12.80.238
+    interface_gateway_ipv4: 198.12.80.237
+    interface_netmask_ipv4: 255.255.255.252
+    interface_onboot: yes
+  - interface_name: p1p2
+    interface_bootproto: static
+    interface_defroute_ipv4: no
+    interface_onboot: no

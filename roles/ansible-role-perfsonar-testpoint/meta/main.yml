@@ -1,0 +1,32 @@
+galaxy_info:
+  author: perfSONAR
+  description: A perfSONAR role to install the perfsonar-testpoint bundle
+  company: perfSONAR Project
+  license: Apache 2.0
+
+  min_ansible_version: 2.2
+
+  platforms:
+    - name: CentOS
+      versions:
+        - 7
+    - name: Debian
+      versions:
+        - 8
+        - 9
+    - name: Ubuntu
+      versions:
+        - 14
+        - 16
+        - 18
+
+  galaxy_tags:
+    - networking
+    - monitoring
+    - perfsonar
+    - network
+    - metrics
+    - performance
+
+dependencies:
+  - role: ansible-role-perfsonar-installer

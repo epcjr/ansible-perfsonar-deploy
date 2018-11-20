@@ -1,0 +1,12 @@
+hostname: psdell3.ilab.umnet.umich.edu
+bastion_hostname: psdell3.ilab.umnet.umich.edu
+
+#interfaces:
+#  - name: em1
+#    ipv4_gateway: 10.111.249.1
+#  - name: em2
+#    ipv4_gateway: 198.111.227.97
+#
+#troubleshoot:
+#  - host: 10.111.249.15
+#  - host: 10.111.249.17

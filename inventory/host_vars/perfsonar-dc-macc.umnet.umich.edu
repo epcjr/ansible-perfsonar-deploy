@@ -1,0 +1,41 @@
+perfsonar_hostname: perfsonar-dc-macc.umnet.umich.edu
+perfsonar_interfaces:
+  - interface_name: em1
+    interface_bootproto: static
+    interface_defroute_ipv4: yes
+    interface_ipaddr_ipv4:  198.108.9.50
+    interface_gateway_ipv4: 198.108.9.49
+    interface_netmask_ipv4: 255.255.255.252
+    interface_onboot: yes
+  - interface_name: p1p1
+    interface_bootproto: static
+    interface_defroute_ipv4: no
+    interface_ipaddr_ipv4:  198.108.9.54
+    interface_gateway_ipv4: 198.108.9.53
+    interface_netmask_ipv4: 255.255.255.252
+    interface_onboot: yes
+perfsonar_troubleshoot:
+  - perfsonar-core-cool.umnet.umich.edu
+interfaces:
+  - interface_name: em1
+    interface_bootproto: static
+    interface_defroute_ipv4: yes
+    interface_ipaddr_ipv4:  198.108.9.50
+    interface_gateway_ipv4: 198.108.9.49
+    interface_netmask_ipv4: 255.255.255.252
+    interface_onboot: yes
+  - interface_name: em2
+    interface_bootproto: static
+    interface_defroute_ipv4: no
+    interface_onboot: no
+  - interface_name: p1p1
+    interface_bootproto: static
+    interface_defroute_ipv4: no
+    interface_ipaddr_ipv4:  198.108.9.54
+    interface_gateway_ipv4: 198.108.9.53
+    interface_netmask_ipv4: 255.255.255.252
+    interface_onboot: yes
+  - interface_name: p1p2
+    interface_bootproto: static
+    interface_defroute_ipv4: no
+    interface_onboot: no

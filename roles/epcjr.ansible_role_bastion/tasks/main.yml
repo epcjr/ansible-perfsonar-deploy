@@ -1,0 +1,63 @@
+---
+# tasks file for ansible-role-bastion
+
+# TODO: Fail if no users or jumpboxes defined
+
+- name: set bastion_hostname
+  hostname:
+    name: "{{ item }}"
+  with_items: "{{ bastion_hostname }}"
+  when: bastion_hostname is defined and bastion_hostname != none
+
+- name: resolv.conf bastion_nameservers
+  lineinfile:
+    path: /etc/resolv.conf
+    line: "nameserver {{ item }}"
+  with_items: "{{ bastion_nameservers }}"
+  when: bastion_nameservers is defined and bastion_nameservers != none
+
+- name: hosts.allow for bastion jumpboxes
+  lineinfile:
+    path: /etc/hosts.allow
+    line: "sshd: {{ item }}"
+  with_items: "{{ bastion_jumpboxes }}"
+
+- name: hosts.deny sshd for everything else
+  lineinfile:
+    path: /etc/hosts.deny
+    line: "sshd: all"
+
+- name: make default group
+  group:
+    name: "{{ bastion_user_group }}"
+    state: present
+
+- name: adduser bastion_users
+  user:
+    name: "{{ item }}"
+    groups: "{{ bastion_user_group }}"
+  with_items: "{{ bastion_users }}"
+
+- name: set up authkeys for bastion_users
+  authorized_key:
+    user: "{{ item }}"
+    key: "{{ lookup('file', '/home/{{ item }}/.ssh/id_rsa.pub')}}"
+  with_items: "{{ bastion_users }}"
+
+- name: disable root ssh
+  lineinfile:
+    state: present
+    path: /etc/ssh/sshd_config
+    regexp: "^PermitRootLogin"
+    line: "PermitRootLogin no"
+  notify:
+    - restart ssh
+
+- name: disable non-key ssh
+  lineinfile:
+    state: present
+    path: /etc/ssh/sshd_config
+    regexp: "^PasswordAuthentication"
+    line: "PasswordAuthentication no"
+  notify:
+    - restart ssh

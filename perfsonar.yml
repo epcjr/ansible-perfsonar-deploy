@@ -1,0 +1,33 @@
+# main perfSONAR config
+
+- name: perfSONAR archives
+  tags: 
+    - archives
+  hosts:
+    - ps-archives
+  roles:
+    - { role: ansible-role-perfsonar-archive }
+
+- name: perfSONAR ps-config-publishers
+  tags: 
+    - psconfig
+  hosts:
+    - ps-psconfig
+  roles:
+    - { role: ansible-role-perfsonar-psconfig }
+
+- name: perfSONAR testpoints
+  tags: 
+    - testpoints
+  hosts:
+    - ps-testpoints
+  roles:
+    - { role: ansible-role-perfsonar-testpoint }
+
+- name: perfSONAR toolkits
+  tags: 
+    - toolkits
+  hosts:
+    - ps-toolkits
+  roles:
+    - { role: ansible-role-perfsonar-toolkit }
