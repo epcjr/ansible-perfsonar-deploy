@@ -29,7 +29,7 @@ ansible_become_user=root
 [ps-archives]
 perfsonar-ma.miserver.it.umich.edu
 
-[ps-psconfig]
+[ps-psconfig-publishers]
 perfsonar-ma.miserver.it.umich.edu
 
 

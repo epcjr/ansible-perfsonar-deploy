@@ -10,11 +10,11 @@
 
 - name: perfSONAR ps-config-publishers
   tags: 
-    - psconfig
+    - psconfig-publishers
   hosts:
-    - ps-psconfig
+    - ps-psconfig-publishers
   roles:
-    - { role: ansible-role-perfsonar-psconfig }
+    - { role: ansible-role-perfsonar-psconfig-publisher }
 
 - name: perfSONAR testpoints
   tags: 
