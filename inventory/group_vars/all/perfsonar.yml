@@ -1,12 +1,47 @@
 ---
-perfsonar_esmond_interfaces: "{{ ansible_all_ipv4_addresses }}"
-perfsonar_esmond_archives: "{{ groups['ps-archives'] }}"
+########################################################################### 
+# Defaults from ansible-role-perfsonar-archive
+#perfsonar_archive_auth_ipv4_addresses: []
+#perfsonar_archive_auth_user: perfsonar
 
-#perfsonar_disable_root_ssh : true
-#perfsonar_os_update: true
-#perfsonar_autoupdate: false
-#perfsonar_troubleshoot: []
-#perfsonar__release: release
+########################################################################### 
+# Defaults from ansible-role-perfsonar-installer
+#
+# perfsonar_os_update: True
+# perfsonar_release: release
+
+########################################################################### 
+# Defaults from ansible-role-perfsonar-maddash
+
+########################################################################### 
+# Defaults from ansible-role-perfsonar-psconfig-publisher
+# perfsonar_psconfig_publish_dir: /tmp
+# perfsonar_psconfig_publish_files: []
+# perfsonar_psconfig_publish_remote_agents: []
+
+perfsonar_psconfig_publish_files:
+  - umich_core.json
+
+perfsonar_psconfig_publish_remote_agents: "{{ groups['ps-maddash'] }}
+    + {{ groups['ps-toolkits'] }}
+    + {{ groups['ps-testpoints'] }}"
+
+########################################################################### 
+# Defaults from ansible-role-perfsonar-testpoint
+# perfsonar_ntp_servers: []
+# perfsonar_disable_root_ssh: True
+# perfsonar_psconfig_remote_remotes: []
+# perfsonar_psconfig_remote_options: "--configure-archives"
+# perfsonar_archive_auth_interfaces: "{{ ansible_all_ipv4_addresses }}"
+# perfsonar_archive_hosts: "{{ groups['ps-archives'] }}"
+# perfsonar_archive_uid: perfsonar
+# perfsonar_optional_packages:
+#   - perfsonar-toolkit-ntp
+#   - perfsonar-toolkit-security
+#   - perfsonar-toolkit-servicewatcher
+#   - perfsonar-toolkit-sysctl
+#   - perfsonar-toolkit-systemenv-testpoint
+
 #perfsonar_ntpservers:
 #  - ntp1.itd.umich.edu
 #  - ntp2.itd.umich.edu
@@ -15,27 +50,34 @@ perfsonar_esmond_archives: "{{ groups['ps-archives'] }}"
 #perfsonar_troubleshoot: []
 #  - perfsonardev0.internet2.edu
 
-### Toolkit settings
-
-#perfsonar_show_password: true
-#perfsonar_web_user: pswebadmin
-#perfsonar_web_passwd: !vault |
-#          $ANSIBLE_VAULT;1.1;AES256
-#          36363939376337363562666535323037373939633965636364376438313364336638333761343230
-#          6161623663326636313339356139373537636366653666650a616131646265376564623731613863
-#          37333336636634633664653430653539653065646638366136323563363132623735303838366266
-#          3731643138373862330a366231666361636535303938313731383061346237666132643966363938
-#          3937
-
-### Testpoint settings
-
 #perfsonar_psconfig_remote_remotes:
 # - url: https://141.211.3.58/psconfig/umich_core.json
 #   state: present
-#
-#perfsonar_optional_packages:
-#  - perfsonar-toolkit-ntp
-#  - perfsonar-toolkit-security
-##  - perfsonar-toolkit-servicewatcher
-#  - perfsonar-toolkit-sysctl
-#  - perfsonar-toolkit-systemenv-testpoint
+
+perfsonar_archive_auth_interfaces: "{{ ansible_all_ipv4_addresses }}"
+
+perfsonar_archive_hosts: "{{ groups['ps-archives'] }}"
+
+perfsonar_optional_packages:
+  - perfsonar-toolkit-ntp
+  - perfsonar-toolkit-security
+  - perfsonar-toolkit-servicewatcher
+  - perfsonar-toolkit-sysctl
+  - perfsonar-toolkit-systemenv-testpoint
+
+########################################################################### 
+# Defaults from ansible-role-perfsonar-toolkit
+# perfsonar_web_user: pswebadmin
+# perfsonar_web_passwd:
+
+perfsonar_show_password: true
+# perfsonar_web_user: pswebadmin
+# perfsonar_web_passwd: !vault |
+#           $ANSIBLE_VAULT;1.1;AES256
+#           36363939376337363562666535323037373939633965636364376438313364336638333761343230
+#           6161623663326636313339356139373537636366653666650a616131646265376564623731613863
+#           37333336636634633664653430653539653065646638366136323563363132623735303838366266
+#           3731643138373862330a366231666361636535303938313731383061346237666132643966363938
+#           3937
+
+########################################################################### 

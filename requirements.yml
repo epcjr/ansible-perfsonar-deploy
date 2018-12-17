@@ -7,6 +7,7 @@
 # Install perfsonar roles
 - src: https://github.com/perfsonar/ansible-role-perfsonar-archive
 - src: https://github.com/perfsonar/ansible-role-perfsonar-installer
+- src: https://github.com/perfsonar/ansible-role-perfsonar-maddash
 - src: https://github.com/perfsonar/ansible-role-perfsonar-testpoint
 - src: https://github.com/perfsonar/ansible-role-perfsonar-toolkit
 - src: https://github.com/perfsonar/ansible-role-perfsonar-psconfig-publisher

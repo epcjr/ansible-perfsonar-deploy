@@ -8,13 +8,13 @@
   roles:
     - { role: ansible-role-perfsonar-archive }
 
-- name: perfSONAR ps-config-publishers
+- name: perfSONAR MadDash
   tags: 
-    - psconfig-publishers
+    - maddash
   hosts:
-    - ps-psconfig-publishers
+    - ps-maddash
   roles:
-    - { role: ansible-role-perfsonar-psconfig-publisher }
+    - { role: ansible-role-perfsonar-maddash }
 
 - name: perfSONAR testpoints
   tags: 
@@ -24,10 +24,20 @@
   roles:
     - { role: ansible-role-perfsonar-testpoint }
 
-- name: perfSONAR toolkits
+- name: perfSONAR toolkit
   tags: 
     - toolkits
   hosts:
     - ps-toolkits
   roles:
     - { role: ansible-role-perfsonar-toolkit }
+
+- name: perfSONAR ps-config-publishers
+  tags: 
+    - psconfig-publishers
+  hosts:
+    - ps-psconfig-publishers
+  roles:
+    - { role: ansible-role-perfsonar-psconfig-publisher }
+
+# psconfig-GUI goes here

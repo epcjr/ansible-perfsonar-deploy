@@ -4,20 +4,18 @@
 # Full perfSONAR hosts inventory
 # If you need to use a sudo password it can be useful to give in the ansible-vault crypted file
 # as `ansible_sudo_pass` This can even be done on a per host basis.
-[all]
+
+# Grouped by installation bundle
+[all:vars]
 
 [ps-testpoints]
 perfsonar-bin-arbl.umnet.umich.edu
 perfsonar-bin-seb.umnet.umich.edu
 perfsonar-core-cool.umnet.umich.edu
+#perfsonar-core-lsa.umnet.umich.edu
 perfsonar-core-fxb.umnet.umich.edu
 perfsonar-core-seb.umnet.umich.edu
 perfsonar-dc-macc.umnet.umich.edu
-
-#perfsonar-core-lsa.umnet.umich.edu
-
-# Grouped by installation bundle
-[all:vars]
 
 [ps-testpoints:vars]
 ansible_become=True
@@ -25,17 +23,26 @@ ansible_become_method=su
 ansible_become_user=root
 
 [ps-toolkits]
+psdell3.ilab.umnet.umich.edu
+
+[ps-toolkits:vars]
+ansible_become=True
+ansible_become_method=su
+ansible_become_user=root
 
 [ps-archives]
+perfsonar-ma.miserver.it.umich.edu
+
+[ps-maddash]
 perfsonar-ma.miserver.it.umich.edu
 
 [ps-psconfig-publishers]
 perfsonar-ma.miserver.it.umich.edu
 
-
 [miservers]
 perfsonar-ma.miserver.it.umich.edu
 
 [miservers:vars]
-ansible_become=yes
+ansible_become=True
 ansible_become_method=sudo
+ansible_become_user=root
