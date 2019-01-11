@@ -1,6 +1,0 @@
-# main perfSONAR config
-# bastion config
-
-- name: bastion security setup
-  import_playbook: bastion.yml
-
