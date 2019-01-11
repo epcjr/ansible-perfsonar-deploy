@@ -1,5 +1,4 @@
-# UMNet-perfsonar
-UMNet perfSONAR config
+playbook for perfSONAR deployment and config
 
 **Quick Start**:
 
