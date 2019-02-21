@@ -8,6 +8,7 @@
 # Defaults from ansible-role-perfsonar-installer
 #
 # perfsonar_os_update: True
+perfsonar_os_update: False
 # perfsonar_release: release
 
 ########################################################################### 

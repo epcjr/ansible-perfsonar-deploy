@@ -1,13 +1,5 @@
 # main perfSONAR config
 
-- name: perfSONAR ps-config-web-admin
-  tags: 
-    - psconfig-web-admin
-  hosts:
-    - ps-psconfig-web-admin
-  roles:
-    - { role: ansible-role-perfsonar-psconfig-web-admin }
-
 - name: perfSONAR archives
   tags: 
     - archives
@@ -48,4 +40,11 @@
   roles:
     - { role: ansible-role-perfsonar-psconfig-publisher }
 
-# psconfig-GUI goes here
+- name: perfSONAR ps-config-web-admin
+  tags: 
+    - psconfig-web-admin
+  hosts:
+    - ps-psconfig-web-admin
+  roles:
+    - { role: ansible-role-perfsonar-psconfig-web-admin }
+
