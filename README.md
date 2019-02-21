@@ -1,5 +1,4 @@
-# UMNet-perfsonar
-UMNet perfSONAR config
+playbook for perfSONAR deployment and config
 
 **Quick Start**:
 
@@ -20,8 +19,12 @@ Set up perfSONAR variables:
 
     vi inventory/group_vars/all/perfsonar.yml
 
-Set up connection variables:
+Set up connection variables (might need to handle vault secrets):
 
     vi inventory/group_vars/all/login.yml
+    
+Run the playbook:
+
+    ansible-playbook --ask-vault-pass perfsonar.yml
 
 
